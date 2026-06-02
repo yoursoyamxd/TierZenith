@@ -1,6 +1,6 @@
 # 🏆 TierZenith official website
 
-Welcome to **TierZenith**, a highly optimized, fully responsive competitive Minecraft PvP Leaderboard and Tier List platform.tracks top-tier players, gamemodes, and competitive rankings across different regions.
+Welcome to **TierZenith**, a highly optimized, fully responsive competitive Minecraft PvP Leaderboard and Tier List platform.tracks top-tier players, gamemodes, and competitive rankings across different region.
 
 ---
 
