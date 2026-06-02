@@ -1,6 +1,6 @@
-# 🏆 TierZenith (MCTiers Clone)
+# 🏆 TierZenith official website
 
-Welcome to **TierZenith**, a highly optimized, fully responsive competitive Minecraft PvP Leaderboard and Tier List platform. Inspired by MCTiers, this interface tracks top-tier players, gamemodes, and competitive rankings across different regions.
+Welcome to **TierZenith**, a highly optimized, fully responsive competitive Minecraft PvP Leaderboard and Tier List platform.tracks top-tier players, gamemodes, and competitive rankings across different regions.
 
 ---
 
@@ -23,12 +23,3 @@ You can view the live website here:
 * **CSS3:** Custom modern property variables, sleek glassmorphic components, and dynamic hover layouts.
 
 ---
-
-## 📄 How to Setup Locally
-If you want to view or test this template on your own computer:
-1. Clone the repository: `git clone https://github.com/yoursoyamxd/TierZenith.git`
-2. Open the `index.html` file inside any web browser.
-
----
-
-*Maintained by [@yoursoyamxd](https://github.com/yoursoyamxd).*
