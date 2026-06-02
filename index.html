@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TierZenith - MCTiers Clone</title>
+    <style>
+        :root {
+            --bg-dark: #0f111a;
+            --bg-card: #161925;
+            --accent-green: #00ff66;
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--bg-card);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #23283d;
+        }
+        header h1 {
+            margin: 0;
+            color: var(--accent-green);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .intro {
+            background: linear-gradient(135deg, #1e2235, #161925);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 1px solid #2d334d;
+        }
+        .gamemodes {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .mode-btn {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid #2d334d;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+        .mode-btn.active, .mode-btn:hover {
+            background-color: var(--accent-green);
+            color: var(--bg-dark);
+            font-weight: bold;
+        }
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2d334d;
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        .leaderboard-table th {
+            background-color: #1e2235;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .leaderboard-table tr {
+            border-bottom: 1px solid #2d334d;
+        }
+        .leaderboard-table tr:last-child {
+            border-bottom: none;
+        }
+        .tier {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .tier-ht1 { background-color: #ff3333; color: white; }
+        .tier-ht2 { background-color: #ff9933; color: white; }
+        .tier-lt2 { background-color: #ffcc00; color: black; }
+        .tier-lt3 { background-color: #3399ff; color: white; }
+        
+        .region {
+            background-color: #2d334d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🏆 TierZenith</h1>
+        <p>Competitive Minecraft PvP Tier List & Leaderboard Platform</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>🧠 Advanced Ranking System</h2>
+            <p>MCTiers Clone supporting multiple gamemodes, region tracking, and real-time player stats.</p>
+        </div>
+
+        <h3>🎮 Select Gamemode</h3>
+        <div class="gamemodes">
+            <button class="mode-btn active">Overall</button>
+            <button class="mode-btn">Vanilla</button>
+            <button class="mode-btn">UHC</button>
+            <button class="mode-btn">Pot</button>
+            <button class="mode-btn">NethOP</button>
+            <button class="mode-btn">SMP</button>
+            <button class="mode-btn">Sword</button>
+        </div>
+
+        <h3>🥇 Top Ranked Players</h3>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player Name</th>
+                    <th>Region</th>
+                    <th>Tier</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1</td>
+                    <td><strong>PlayerOne</strong></td>
+                    <td><span class="region">EU</span></td>
+                    <td><span class="tier tier-ht1">HT1</span></td>
+                    <td>2,450</td>
+                </tr>
+                <tr>
+                    <td>#2</td>
+                    <td><strong>PvPMaster</strong></td>
+                    <td><span class="region">NA</span></td>
+                    <td><span class="tier tier-ht1">HT1</span></td>
+                    <td>2,320</td>
+                </tr>
+                <tr>
+                    <td>#3</td>
+                    <td><strong>SoyamXD</strong></td>
+                    <td><span class="region">AS</span></td>
+                    <td><span class="tier tier-ht2">HT2</span></td>
+                    <td>2,100</td>
+                </tr>
+                <tr>
+                    <td>#4</td>
+                    <td><strong>ComboGod</strong></td>
+                    <td><span class="region">NA</span></td>
+                    <td><span class="tier tier-lt2">LT2</span></td>
+                    <td>1,950</td>
+                </tr>
+                <tr>
+                    <td>#5</td>
+                    <td><strong>MinecraftPro</strong></td>
+                    <td><span class="region">EU</span></td>
+                    <td><span class="tier tier-lt3">LT3</span></td>
+                    <td>1,800</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
