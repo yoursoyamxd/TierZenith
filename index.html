@@ -3,320 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TierZenith</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-        :root {
-            --bg-main: #050508;
-            --bg-surface: #0b0c10;
-            --bg-card: #12131a;
-            --border-color: #1f222e;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --mctiers-green: #00ff66;
-            --glow-green: rgba(0, 255, 102, 0.15);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            padding-bottom: 60px;
-        }
-
-        /* Navbar Style */
-        nav {
-            background-color: var(--bg-surface);
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-
-        nav .logo span {
-            color: var(--mctiers-green);
-            text-shadow: 0 0 10px var(--glow-green);
-        }
-
-        /* Container layout */
-        .main-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Header section */
-        .hero {
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 16px;
-        }
-
-        /* Gamemode Selector Tabs */
-        .tab-container {
-            display: flex;
-            gap: 8px;
-            background-color: var(--bg-surface);
-            padding: 6px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            overflow-x: auto;
-            margin-bottom: 30px;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.03);
-        }
-
-        .tab-btn.active {
-            background-color: var(--bg-card);
-            color: var(--mctiers-green);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        /* Leaderboard Table Grid */
-        .leaderboard-wrapper {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th {
-            background-color: rgba(255, 255, 255, 0.01);
-            color: var(--text-secondary);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        td {
-            padding: 18px 24px;
-            border-bottom: 1px solid rgba(31, 34, 46, 0.5);
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background-color: rgba(255, 255, 255, 0.01);
-        }
-
-        /* Rank Style */
-        .rank-num {
-            color: var(--text-secondary);
-            font-weight: 700;
-        }
-
-        tr:nth-child(1) .rank-num { color: #ffbc00; }
-        tr:nth-child(2) .rank-num { color: #d1d5db; }
-        tr:nth-child(3) .rank-num { color: #b45309; }
-
-        /* Player name block */
-        .player-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .player-avatar {
-            width: 28px;
-            height: 28px;
-            background-color: #242736;
-            border-radius: 4px;
-        }
-
-        .player-name {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        /* Original MCTiers Badges */
-        .tier-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .ht1 { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .lt1 { background-color: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
-        .ht2 { background-color: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); }
-        .lt2 { background-color: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
-        .ht3 { background-color: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
-
-        /* Region tags */
-        .region-tag {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .points {
-            color: var(--mctiers-green);
-            font-weight: 700;
-            font-family: monospace;
-            font-size: 16px;
-        }
-    </style>
+    <title>TierZenith Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">MCTiers<span>.zone</span></div>
-    </nav>
+    <div class="leaderboard-container">
+        
+        <nav class="nav-tabs">
+            <button class="tab-btn active"><i class="fa-solid fa-trophy"></i> Overall</button>
+            <button class="tab-btn"><i class="fa-solid fa-crosshairs"></i> LTMs</button>
+            <button class="tab-btn"><i class="fa-solid fa-cube"></i> Vanilla</button>
+            <button class="tab-btn"><i class="fa-solid fa-heart"></i> UHC</button>
+            <button class="tab-btn"><i class="fa-solid fa-flask"></i> Pot</button>
+            <button class="tab-btn"><i class="fa-solid fa-ghost"></i> NethOP</button>
+            <button class="tab-btn"><i class="fa-solid fa-circle"></i> SMP</button>
+            <button class="tab-btn"><i class="fa-solid fa-shield-halved"></i> Sword</button>
+        </nav>
 
-    <div class="main-container">
-        <div class="hero">
-            <h1>Rankings</h1>
-            <p>Official global player tiers and competitive PvP leaderboards.</p>
+        <div class="info-row">
+            <button class="info-btn"><i class="fa-solid fa-circle-info"></i> Information</button>
+            </div>
         </div>
 
-        <div class="tab-container">
-            <button class="tab-btn active">Overall</button>
-            <button class="tab-btn">Vanilla</button>
-            <button class="tab-btn">Sword</button>
-            <button class="tab-btn">PotPvP</button>
-            <button class="tab-btn">UHC</button>
-            <button class="tab-btn">NethPot</button>
-            <button class="tab-btn">Axe Shield</button>
+        <div class="table-header">
+            <div class="header-rank">#</div>
+            <div class="header-player">PLAYER</div>
+            <div class="header-region">REGION</div>
+            <div class="header-tiers">TIERS</div>
         </div>
 
-        <div class="leaderboard-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 80px;">Rank</th>
-                        <th>Player</th>
-                        <th>Tier</th>
-                        <th>Region</th>
-                        <th style="text-align: right;">Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="rank-num">1</span></td>
-                        <td>
-                            <div class="player-info">
-                                <div class="player-avatar"></div>
-                                <span class="player-name">SoyamXD</span>
-                            </div>
-                        </td>
-                        <td><span class="tier-badge ht1">HT1</span></td>
-                        <td><span class="region-tag">AS</span></td>
-                        <td style="text-align: right;"><span class="points">2950</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-num">2</span></td>
-                        <td>
-                            <div class="player-info">
-                                <div class="player-avatar"></div>
-                                <span class="player-name">PvPGod_420</span>
-                            </div>
-                        </td>
-                        <td><span class="tier-badge ht1">HT1</span></td>
-                        <td><span class="region-tag">EU</span></td>
-                        <td style="text-align: right;"><span class="points">2810</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-num">3</span></td>
-                        <td>
-                            <div class="player-info">
-                                <div class="player-avatar"></div>
-                                <span class="player-name">b0bby_</span>
-                            </div>
-                        </td>
-                        <td><span class="tier-badge lt1">LT1</span></td>
-                        <td><span class="region-tag">NA</span></td>
-                        <td style="text-align: right;"><span class="points">2640</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-num">4</span></td>
-                        <td>
-                            <div class="player-info">
-                                <div class="player-avatar"></div>
-                                <span class="player-name">ComboSlayer</span>
-                            </div>
-                        </td>
-                        <td><span class="tier-badge ht2">HT2</span></td>
-                        <td><span class="region-tag">NA</span></td>
-                        <td style="text-align: right;"><span class="points">2450</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-num">5</span></td>
-                        <td>
-                            <div class="player-info">
-                                <div class="player-avatar"></div>
-                                <span class="player-name">Zephyrus</span>
-                            </div>
-                        </td>
-                        <td><span class="tier-badge lt2">LT2</span></td>
-                        <td><span class="region-tag">EU</span></td>
-                        <td style="text-align: right;"><span class="points">2300</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="player-list">
+            
+            <div class="player-row rank-1">
+                <div class="rank-num">1.</div>
+                <div class="player-info">
+                    <div class="avatar-container">
+                        <div class="avatar steve-placeholder"></div> 
+                    </div>
+                    <div class="player-meta">
+                        <span class="player-name">ItzRealMe</span>
+                        <span class="player-subtext"><i class="fa-solid fa-gem text-gold"></i> Combat Master <span class="points">(330 poin...)</span></span>
+                    </div>
+                </div>
+                <div class="player-region">
+                    <span class="badge badge-na">NA</span>
+                </div>
+                <div class="player-tiers-list">
+                    <span class="tier tier-ht3">HT3</span>
+                    <span class="tier tier-ht1 relative-tooltip">
+                        HT1
+                        <div class="tooltip">
+                            <strong>Retired HT1</strong>
+                            <span>60 points</span>
+                        </div>
+                    </span>
+                    <span class="tier tier-lt2">LT2</span>
+                    <span class="tier tier-lt2">LT2</span>
+                </div>
+            </div>
+
+            <div class="player-row rank-2">
+                <div class="rank-num">2.</div>
+                <div class="player-info">
+                    <div class="avatar-container">
+                        <div class="avatar custom-placeholder"></div>
+                    </div>
+                    <div class="player-meta">
+                        <span class="player-name">coldified</span>
+                        <span class="player-subtext"><i class="fa-solid fa-gem text-gold"></i> Combat Master <span class="points">(326 poin...)</span></span>
+                    </div>
+                </div>
+                <div class="player-region">
+                    <span class="badge badge-eu">EU</span>
+                </div>
+                <div class="player-tiers-list">
+                    <span class="tier tier-lt1">LT1</span>
+                    <span class="tier tier-lt1">LT1</span>
+                    <span class="tier tier-lt3">LT3</span>
+                    <span class="tier tier-ht1">HT1</span>
+                    <span class="tier tier-lt2">LT2</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
